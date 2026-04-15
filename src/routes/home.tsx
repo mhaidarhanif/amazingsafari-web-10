@@ -1,6 +1,6 @@
-import { $api } from "./modules/common/api";
+import { $api } from "../modules/common/api";
 
-export function App() {
+export function HomeRoute() {
   const {
     data: products,
     error,
@@ -25,5 +25,3 @@ export function App() {
     </main>
   );
 }
-
-export default App;
