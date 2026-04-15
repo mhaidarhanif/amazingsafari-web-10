@@ -1,7 +1,9 @@
 import { LoginForm } from "@/components/auth/login-form";
 import { $api } from "@/modules/common/api";
+import { useNavigate } from "react-router";
 
 export function LoginRoute() {
+  const navigate = useNavigate();
   const { mutate } = $api.useMutation("post", "/auth/login", {
     onSuccess: (responseLogin) => {
       const { token } = responseLogin;
@@ -9,6 +11,8 @@ export function LoginRoute() {
       console.log(token);
 
       // TODO: save token in browser cookie
+
+      navigate("/dashboard");
     },
   });
 

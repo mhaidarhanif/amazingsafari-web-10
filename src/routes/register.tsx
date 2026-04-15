@@ -1,9 +1,15 @@
 import { RegisterForm } from "@/components/auth/register-form";
 
 import { $api } from "@/modules/common/api";
+import { useNavigate } from "react-router";
 
 export function RegisterRoute() {
-  const { mutate } = $api.useMutation("post", "/auth/register");
+  const navigate = useNavigate();
+  const { mutate } = $api.useMutation("post", "/auth/register", {
+    onSuccess: () => {
+      navigate("/login");
+    },
+  });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
