@@ -1,7 +1,9 @@
+import { RegisterForm } from "@/components/auth/register-form";
+
 export function RegisterRoute() {
   return (
     <main>
-      <h1>Register</h1>
+      <RegisterForm />
     </main>
   );
 }

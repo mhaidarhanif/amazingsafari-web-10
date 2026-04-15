@@ -1,7 +1,9 @@
+import { LoginForm } from "@/components/auth/login-form";
+
 export function LoginRoute() {
   return (
     <main>
-      <h1>Login</h1>
+      <LoginForm />
     </main>
   );
 }
