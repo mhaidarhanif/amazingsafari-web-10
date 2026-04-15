@@ -18,8 +18,11 @@ import { Link } from "react-router";
 
 export function LoginForm({
   className,
+  handleSubmit,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<"div"> & {
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+}) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -28,7 +31,7 @@ export function LoginForm({
           <CardDescription>Enter your email and password</CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit}>
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="email">Email</FieldLabel>
