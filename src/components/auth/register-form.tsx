@@ -15,7 +15,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router";
 
-export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
+export function RegisterForm({
+  handleSubmit,
+  ...props
+}: React.ComponentProps<typeof Card> & {
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+}) {
   return (
     <Card {...props}>
       <CardHeader>
@@ -25,7 +30,7 @@ export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
+        <form onSubmit={handleSubmit}>
           <FieldGroup>
             <Field>
               <FieldLabel htmlFor="name">Full Name</FieldLabel>
