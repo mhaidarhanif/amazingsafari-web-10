@@ -7,6 +7,7 @@ export function LoginRoute() {
   const { setToken } = useAuth();
 
   const navigate = useNavigate();
+
   const { mutate } = $api.useMutation("post", "/auth/login", {
     onSuccess: (responseLogin) => {
       const { token } = responseLogin;
