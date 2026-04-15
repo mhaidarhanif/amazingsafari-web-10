@@ -1,17 +1,17 @@
 import { LoginForm } from "@/components/auth/login-form";
+import type { CookieValues } from "@/modules/auth/type";
 import { $api } from "@/modules/common/api";
 import { useNavigate } from "react-router";
+import { useCookies } from "react-cookie";
 
 export function LoginRoute() {
+  const [_, setCookie] = useCookies<"token", CookieValues>([]);
+
   const navigate = useNavigate();
   const { mutate } = $api.useMutation("post", "/auth/login", {
     onSuccess: (responseLogin) => {
       const { token } = responseLogin;
-
-      console.log(token);
-
-      // TODO: save token in browser cookie
-
+      setCookie("token", token);
       navigate("/dashboard");
     },
   });
